@@ -1,0 +1,1322 @@
+/* src/App.css */
+/* ①  Cole isto logo no topo do seu src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+/* ②  Aplica Nova Square em toda a aplicação                         */
+/*     (troque “sans-serif” por outra família de fallback se quiser) */
+html, body, #root, * {
+  font-family: 'Nova Square', sans-serif;
+}
+
+/* 1. Importe sua fonte variável Karla-Italic-VariableFont_wght */
+/* Coloque Karla-Italic-VariableFont_wght.ttf em src/assets/fonts/ */
+@font-face {
+  font-family: 'NovaSquare-Bold';
+  src: url('./assets/fonts/NovaSquare-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* 2. Container principal e header */
+
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+/* 3. Vídeo dentro da moldura */
+.frame-container {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  aspect-ratio: 16/9;
+}
+
+.video-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: none;
+  z-index: 1;
+}
+
+.frame-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+
+.aguarde-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+  font-size: 8vw;
+  line-height: 1;
+  text-align: center;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* 5. Botão verde que cresce conforme o texto */
+.botao-container {
+  position: relative;
+  display: inline-block;   /* ajusta largura ao conteúdo */
+  margin: 1.5rem auto 2rem;
+  overflow: visible;
+}
+
+.botao-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;           /* ocupa toda a altura do texto */
+  width: auto;            /* largura escala proporcionalmente */
+  z-index: 0;
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #fff;
+  font-size: 1vw;          /* menor para caber em uma única linha */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;     /* força em uma linha */
+  line-height: 3vw;        /* define a altura do botão */
+  padding: 0 2vw;          /* espaçamento interno que define a largura */
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* BOTÃO VERDE: escala só em largura, altura fixa */
+.botao-container {
+  display: inline-block;
+  position: relative;
+  margin: 1.5rem auto 2rem;
+
+  /* imagem de fundo */
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+
+  /* mantém a altura em 4vw e deixa a largura livre para crescer */
+  height: 4vw;
+  background-size: auto 100%;
+
+  /* espaço interno lateral para o texto */
+  padding: 0 2vw;
+  line-height: 4vw; /* centraliza verticalmente o texto */
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1vw;       /* texto menor para caber em uma linha */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;  /* força única linha */
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* Ajuste para estender o botão mais para a direita */
+.botao-container {
+  display: inline-block;
+  position: relative;
+  margin: 1.5rem auto 2rem;
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+  background-size: auto 100%;
+  height: 4vw;
+  /* padding: topo/direita/baixo/esquerda */
+  padding: 0 6vw 0 2vw;  
+  line-height: 4vw;
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.1vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* BOTÃO VERDE, shiftado para a direita */
+.botao-container {
+  display: inline-block;
+  position: relative;
+  /* empurra o botão todo para a direita */
+  margin: 1.5rem auto 2rem  auto;  
+  height: 4vw;
+  line-height: 4vw;  
+  padding: 0 3vw;                    /* espaço interno lateral */
+  background: url('./assets/BOTAO_VERDE.png') no-repeat right center;
+  background-size: auto 100%;        /* mantém a altura fixa, estica apenas a largura */
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* BOTÃO VERDE, shiftado para a direita */
+.botao-container {
+  display: inline-block;
+  position: relative;
+  /* empurra o botão todo para a direita */
+  margin: 1.5rem auto 2rem  auto;  
+  height: 4vw;
+  line-height: 4vw;  
+  padding: 0 3vw;                    /* espaço interno lateral */
+  background: url('./assets/BOTAO_VERDE.png') no-repeat right center;
+  background-size: auto 100%;        /* mantém a altura fixa, estica apenas a largura */
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* Diminua levemente apenas o botão verde */
+/* Mantenha o restante exatamente igual */
+.botao-container {
+  height: 3.5vw;        /* antes era 4vw */
+  line-height: 3.5vw;   /* ajusta para centralizar verticalmente */
+  padding: 0 2.5vw;     /* antes era 0 3vw */
+}
+/* BOTÃO VERDE COM BORDER-IMAGE */
+.botao-container {
+  display: inline-block;
+  position: relative;
+  
+  /* define uma borda transparente que vai ser preenchida pelo sprite */
+  border-style: solid;
+  border-width: 0 2.5vw; /* 2.5vw de “borda” esquerda e direita */
+  
+  /* use a imagem como borda, cortando 0px em cima/baixo e 40px à esquerda/direita */
+  border-image-source: url('./assets/BOTAO_VERDE.png');
+  border-image-slice:       0 40 0 40 fill;   /* top | right | bottom | left */
+  border-image-width:       0 40px 0 40px;     
+  border-image-repeat: stretch;
+  
+  /* altura fixa e texto centralizado verticalmente */
+  height: 4vw;
+  line-height: 4vw;
+  
+  /* espaço interno extra para o texto não encostar nas extremidades */
+  padding: 0 1vw;
+}
+
+.botao-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.6vw;     /* aumente ou diminua conforme necessário */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+/* <<< Ajuste para deixar o botão bem menor que o “AGUARDE…” >>> */
+.botao-container {
+  /* reduz bastante a altura */
+  height: 2vw;              /* antes era 4vw */
+  line-height: 2vw;         /* centraliza verticalmente o texto */
+  /* reduz também a folga horizontal */
+  padding: 0 1vw;           /* antes era 0 3vw */
+  /* mantêm o mesmo background e escala apenas largura para caber o texto */
+  background-size: auto 100%;
+}
+
+.botao-text {
+  /* texto proporcionalmente menor */
+  font-size: 0.8vw;         /* antes era 1.6vw ou 1.1vw */
+}
+/* Centraliza o texto dentro do botão */
+.botao-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Remove qualquer transform se houver */
+.botao-text {
+  transform: none;
+}
+.botao-container {
+  padding-left: 0.5px;
+  padding-right: 0.5px;
+}
+
+.botao-text {
+  font-size: 14px;
+}
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  color: #fff;
+  text-align: center;
+}
+
+/* Botão de fechar */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Formulário */
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content input[type='email'] {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.modal-submit {
+  background: #41884d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-submit:hover {
+  background: #356837;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+
+/* Header e logo */
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.logo {
+  max-width: 200px;
+}
+
+/* Vídeo dentro da moldura */
+.frame-container {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  aspect-ratio: 16/9;
+}
+.video-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: none;
+  z-index: 1;
+}
+.frame-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* AGUARDE... com gradiente suave no topo */
+.aguarde-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0)    0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.75) 30%,
+    rgba(0, 0, 0, 1)    60%,
+    rgba(0, 0, 0, 1)   100%
+  );
+}
+.aguarde-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+  font-size: 8vw;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* Botão verde com fundo stretch na largura */
+.botao-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 1rem;
+  height: 3vw;
+  line-height: 3vw;
+  padding: 0 2vw;
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+  background-size: auto 100%;
+  cursor: pointer;
+}
+.botao-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.4vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Ícones sociais */
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.social-icon {
+  width: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-content input[type='email'] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.modal-submit {
+  background: #41884d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.modal-submit:hover {
+  background: #356837;
+}
+ /* src/App.css */
+
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/BACKGROUND_01.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.logo {
+  max-width: 200px;
+}
+
+/* Vídeo */
+.frame-container {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  aspect-ratio: 16/9;
+}
+.video-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: none;
+  z-index: 1;
+}
+.frame-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* AGUARDE... */
+.aguarde-container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0)    0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.75) 30%,
+    rgba(0, 0, 0, 1)    60%,
+    rgba(0, 0, 0, 1)   100%
+  );
+}
+.aguarde-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+  font-size: 8vw;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* Botão verde */
+.botao-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 1rem;
+  height: 3vw;
+  line-height: 3vw;
+  padding: 0 2vw;
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+  background-size: auto 100%;
+  cursor: pointer;
+}
+.botao-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.4vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Redes sociais */
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.social-icon {
+  width: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+.footer-text {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-content input[type='email'] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.modal-submit {
+  background: #41884d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.modal-submit:hover {
+  background: #356837;
+}
+/* src/App.css */
+
+/* 1. Fonte variável Karla-Italic */
+@font-face {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  src: url('./assets/fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 100 900;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* 2. Container principal: centraliza tudo */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/BACKGROUND_01.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centro vertical */
+  align-items: center;      /* centro horizontal */
+}
+
+/* Header e logo */
+.app-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.logo {
+  max-width: 200px;
+}
+
+/* Vídeo dentro da moldura */
+.frame-container {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  margin: 1rem 0;           /* apenas margem vertical */
+  aspect-ratio: 16/9;
+}
+.video-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: none;
+  z-index: 1;
+}
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+.aguarde-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+  font-size: 8vw;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* Botão verde */
+.botao-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+  height: 3vw;
+  line-height: 3vw;
+  padding: 0 2vw;
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+  background-size: auto 100%;
+  cursor: pointer;
+}
+.botao-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.4vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Redes sociais */
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+.social-icon {
+  width: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+.footer-text {
+  color: #fff;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-content input[type='email'] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.modal-submit {
+  background: #41884d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.modal-submit:hover {
+  background: #356837;
+}
+/* Ajuste para que o fundo e o degradê do “AGUARDE...” preencham até o final da tela */
+.aguarde-container {
+  flex: 1;                  /* ocupa todo o espaço restante */
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* mantém o texto centralizado horizontalmente */
+  align-items: center;      /* mantém o texto centralizado verticalmente */
+  margin: 0;
+  padding: 0;
+
+  /* degradê suave que começa transparente e escurece até preencher o resto da viewport */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0)    0%,
+    rgba(0, 0, 0, 0.25) 10%,
+    rgba(0, 0, 0, 0.75) 30%,
+    rgba(0, 0, 0, 1)    60%,
+    rgba(0, 0, 0, 1)   100%
+  );
+}
+
+
+
+/* Em src/App.css */
+
+/* 1) Garante que o pai seja full-height flex-column */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: url('./assets/BACKGROUND_01.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* Em src/App.css */
+
+/* 1) Garante que o pai seja full-height flex-column */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: url('./assets/BACKGROUND_01.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 2) Este container agora engloba AGUARDE…, botão, ícones e footer */
+
+
+
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+
+.app-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+/* 3. Vídeo dentro da moldura */
+.frame-container {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  margin: 1rem 0;
+  aspect-ratio: 16/9;
+}
+.video-iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border: none;
+  z-index: 1;
+}
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+
+
+
+.aguarde-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+  font-size: 8vw;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* 5. Botão verde */
+.botao-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  height: 3vw;
+  line-height: 3vw;
+  padding: 0 2vw;
+  background: url('./assets/BOTAO_VERDE.png') no-repeat center center;
+  background-size: auto 100%;
+  cursor: pointer;
+}
+.botao-img {
+  display: none; /* ocultamos, pois o background já é o shape */
+}
+.botao-text {
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  font-size: 1.4vw;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 6. Redes sociais */
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+.social-icon {
+  width: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* 7. Footer */
+.footer-text {
+  color: #fff;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+}
+
+/* 8. Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-family: 'NovaSquare-Bold', sans-serif;
+  font-style: italic;
+  color: #41884d;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.modal-content input[type='email'] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.modal-submit {
+  background: #41884d;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.modal-submit:hover {
+  background: #356837;
+}
+/* ---------- SEÇÃO INFERIOR: empilha tudo em coluna ---------- */
+.lower-section {
+  width: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;   /* força empilhamento vertical */
+  align-items: center;      /* centraliza na horizontal */
+  padding: 0;
+}
+
+/* espaço entre os blocos dentro da seção */
+.lower-section > * {
+  margin-bottom: 1.5rem;
+}
+
+/* “AGUARDE...” um pouco mais afastado do topo da faixa preta */
+.lower-section .aguarde-text {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ícones em coluna (um embaixo do outro) */
+.social-container {
+  display: flex;
+  flex-direction: column;   /* empilha ícones */
+  align-items: center;
+  gap: 1rem;                /* distância entre eles */
+}
+
+/* garante que o rodapé encoste no fim da tela */
+.footer-text {
+  margin-bottom: 2rem;
+}
+/* ---------- ÍCONES SOCIAIS EM LINHA ---------- */
+.social-container {
+  display: flex;
+  flex-direction: row;   /* coloca lado a lado */
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;           /* espaço entre ícones */
+}
+/* ---------- FUNDO PRETO COM DEGRADÊ SÓ NO TOPO ---------- */
+.lower-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+
+  /* degradé bem curto no topo, preto sólido no resto */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.00) 0%,    /* totalmente transparente no início */
+    rgba(0, 0, 0, 0.15) 6%,    /* leve escurecido                   */
+    rgba(0, 0, 0, 0.35) 12%,   /* um pouco mais escuro              */
+    #000 25%,                  /* preto sólido a partir daqui       */
+    #000 100%                  /* permanece preto até o fim         */
+  );
+}
+/* ---------- DESATIVA A ROLAGEM GLOBAL ---------- */
+html, body, #root, .app-container {
+  overflow: hidden;   /* bloqueia scroll vertical e horizontal */
+}
+/* ---------- AJUSTE SUTIL NA POSIÇÃO DA LOGO ---------- */
+.logo {
+  margin-top: 2rem;   /* ajuste fino: aumente/diminua à vontade */
+}
+
+
+/* ---------- COLA COPYRIGHT AOS ÍCONES SOCIAIS ---------- */
+.social-container {
+  margin-bottom: 0.25rem;   /* distância mínima abaixo dos ícones */
+}
+
+.footer-text {
+  margin-top: 0;            /* remove o espaço acima do texto      */
+}
+/* ---------- DESLOCA TODO O CONTEÚDO UM POUCO PARA CIMA ---------- */
+.app-container {
+  transform: translateY(-2vh);  /* suba ~2 % da altura da viewport.
+                                   Ajuste para -1vh, -3vh… se precisar */
+}
+/* ---------- COPYRIGHT SEMPRE VISÍVEL ---------- */
+.app-container {
+  position: relative;     /* cria o contexto para o posicionamento absoluto */
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 0.5rem;         /* distância do rodapé (ajuste se quiser) */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;              /* zera margens que possam empurrar o texto */
+  pointer-events: none;   /* evita clicar “sem querer” no rodapé */
+}
+/* ---------- SOBE TODO O CONTEÚDO, MAS MANTÉM O COPYRIGHT FIXO ---------- */
+/* 1) Garante que o contêiner principal não seja deslocado */
+.app-container {
+  transform: none !important;   /* desfaz translateY anterior, se houver */
+}
+
+/* 2) Move para cima todos os filhos diretos, exceto o rodapé */
+.app-container > *:not(.footer-text) {
+  transform: translateY(-3vh);  /* ajuste: -2vh, -4vh… conforme preferir */
+}
+/* 3) Ícones sociais um tiquinho mais para cima, sem mexer no resto */
+.social-container {
+  transform: translateY(-2vh); /* ajuste fino: aumente/diminua se quiser */
+}
+/* ─── 1. importe uma única vez ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+/* ─── 2. fonte global (regular 400) ────────────────────────────────────── */
+html, body, #root, * {
+  font-family: 'Nova Square', sans-serif;
+}
+
+/* ─── 3. onde quiser “bold” de verdade ─────────────────────────────────── */
+.botao-text,
+.aguarde-text,
+.footer-text           /* …ou qualquer seletor que queira em negrito */
+{
+  font-weight: 700;    /* o navegador sintetiza o peso               */
+  font-style: italic;  /* se precisar itálico                         */
+}
+/* Texto “AGUARDE…” */
+.aguarde-text {
+  font-family: 'Nova Square', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 8vw;
+  line-height: 1;
+  color: #41884d;
+  text-align: center;
+  text-shadow:
+    2px  2px 0 #41884d,
+   -2px  2px 0 #41884d,
+    2px -2px 0 #41884d,
+   -2px -2px 0 #41884d;
+}
+
+/* Texto do botão “Cadastre o seu email para receber novidades” */
+.botao-text {
+  font-family: 'Nova Square', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1vw;      /* ajuste conforme precisar */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
