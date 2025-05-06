@@ -17,11 +17,41 @@ import tiktokIcon  from './assets/TikTok.png';  // Novo ícone do TikTok
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email,       setEmail]       = useState('');
+  const [loading,     setLoading]     = useState(false);
+  const [error,       setError]       = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email cadastrado:', email);
-    setIsModalOpen(false);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        'https://y57yu3j3k2.execute-api.sa-east-1.amazonaws.com/prod/api/email-out',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || 'Erro ao enviar e‑mail');
+      }
+
+      // sucesso
+      setEmail('');
+      setIsModalOpen(false);
+      alert('E‑mail cadastrado com sucesso!');
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -54,7 +84,6 @@ function App() {
           tabIndex={0}
           onKeyPress={() => setIsModalOpen(true)}
         >
-          {/* background do botão é via CSS; a <img> não é mais necessária */}
           <span className="botao-text">
             Cadastre o seu email para receber novidades
           </span>
@@ -74,7 +103,7 @@ function App() {
             <img src={faceIcon} alt="Facebook" className="social-icon" />
           </a>
           <a href="https://www.tiktok.com/@continuumentertainment" target="_blank" rel="noreferrer">
-            <img src={tiktokIcon} alt="TikTok" className="social-icon" />  {/* Ícone do TikTok */}
+            <img src={tiktokIcon} alt="TikTok" className="social-icon" />
           </a>
         </div>
 
@@ -97,8 +126,11 @@ function App() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className="modal-submit">Enviar</button>
+              <button type="submit" className="modal-submit" disabled={loading}>
+                {loading ? 'Enviando...' : 'Enviar'}
+              </button>
             </form>
+            {error && <p className="modal-error">{error}</p>}
           </div>
         </div>
       )}
