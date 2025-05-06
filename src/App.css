@@ -1320,3 +1320,30 @@ html, body, #root, * {
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
+
+@media (max-width: 600px) {
+  /* ... suas outras regras ... */
+
+  /* esconde o “© 2025 Continuum…” em telas pequenas */
+  .footer-text {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  /* botão verde ainda menor */
+  .botao-container {
+    height: 3vw;            /* altura reduzida */
+    padding: 0.4rem 2vw;    /* menos folga lateral */
+    margin: 1rem 0;         /* espaçamento vertical */
+  }
+  .botao-text {
+    font-size: 3vw;         /* texto proporcionalmente menor */
+  }
+}
+@media (max-width: 600px) {
+  /* “AGUARDE…” um pouco menor que 18vw */
+  .aguarde-text {
+    font-size: 16vw;   /* de 18vw para 16vw */
+    margin: 1rem 0;    /* mantém espaçamento consistente */
+  }
+}
