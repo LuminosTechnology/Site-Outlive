@@ -12,10 +12,11 @@ import faceIcon    from './assets/Face.png';
 import discordIcon from './assets/Discord.png';
 import ytIcon      from './assets/YT.png';
 import instaIcon   from './assets/Insta.png';
-import tiktokIcon  from './assets/TikTok.png';  // Novo ícone do TikTok
+import tiktokIcon  from './assets/TikTok.png';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
   const [email,       setEmail]       = useState('');
   const [loading,     setLoading]     = useState(false);
   const [error,       setError]       = useState(null);
@@ -30,22 +31,20 @@ function App() {
         'https://y57yu3j3k2.execute-api.sa-east-1.amazonaws.com/prod/api/email-out',
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
         }
       );
 
       if (!response.ok) {
         const errData = await response.json();
-        throw new Error(errData.message || 'Erro ao enviar e‑mail');
+        throw new Error(errData.message || 'Erro ao enviar e-mail');
       }
 
-      // sucesso
-      setEmail('');
+      // sucesso: fecha modal de inscrição e abre modal de confirmação
       setIsModalOpen(false);
-      alert('E‑mail cadastrado com sucesso!');
+      setSuccessModalOpen(true);
+      setEmail('');
     } catch (err) {
       console.error(err);
       setError(err.message);
@@ -56,12 +55,12 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* ---------- LOGO ---------- */}
+      {/* LOGO */}
       <header className="app-header">
         <img src={logo} alt="Continuum Logo" className="logo" />
       </header>
 
-      {/* ---------- VÍDEO COM MOLDURA ---------- */}
+      {/* VÍDEO + MOLDURA */}
       <div className="frame-container">
         <iframe
           src="https://www.youtube.com/embed/WDIAiMfiCyY"
@@ -73,7 +72,7 @@ function App() {
         <img src={moldura} alt="Moldura Home Verde" className="frame-image" />
       </div>
 
-      {/* ---------- TUDO QUE VEM DEPOIS DO VÍDEO ---------- */}
+      {/* SEÇÃO INFERIOR */}
       <section className="lower-section">
         <span className="aguarde-text">AGUARDE...</span>
 
@@ -106,13 +105,9 @@ function App() {
             <img src={tiktokIcon} alt="TikTok" className="social-icon" />
           </a>
         </div>
-
-        <div className="footer-text">
-          © 2025 Continuum Entertainment. Todos os direitos reservados.
-        </div>
       </section>
 
-      {/* ---------- MODAL ---------- */}
+      {/* MODAL DE INSCRIÇÃO */}
       {isModalOpen && (
         <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -131,6 +126,23 @@ function App() {
               </button>
             </form>
             {error && <p className="modal-error">{error}</p>}
+          </div>
+        </div>
+      )}
+
+      {/* MODAL DE CONFIRMAÇÃO */}
+      {successModalOpen && (
+        <div className="modal-overlay" onClick={() => setSuccessModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSuccessModalOpen(false)}>×</button>
+            <h2>E-mail cadastrado!</h2>
+            <p>Obrigado por se inscrever.</p>
+            <button
+              className="modal-submit"
+              onClick={() => setSuccessModalOpen(false)}
+            >
+              Fechar
+            </button>
           </div>
         </div>
       )}
