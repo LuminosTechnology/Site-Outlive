@@ -1,25 +1,32 @@
 // src/App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import logo     from './assets/ContinuumCOLOR.png';
 import moldura  from './assets/MOLDURA_HOME_VERDE.png';
-import botaoImg from './assets/BOTAO_VERDE.png';
 
 // ícones sociais
 import twitterIcon from './assets/Twiiter.png';
 import faceIcon    from './assets/Face.png';
-import discordIcon from './assets/Discord.png';
 import ytIcon      from './assets/YT.png';
 import instaIcon   from './assets/Insta.png';
 import tiktokIcon  from './assets/TikTok.png';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen]         = useState(false);
   const [successModalOpen, setSuccessModalOpen] = useState(false);
-  const [email,       setEmail]       = useState('');
-  const [loading,     setLoading]     = useState(false);
-  const [error,       setError]       = useState(null);
+  const [email, setEmail]                     = useState('');
+  const [loading, setLoading]                 = useState(false);
+  const [error, setError]                     = useState(null);
+
+  // injeta o <link> do Google Fonts no <head> sem tocar no index.html
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Nova+Square:ital,wght@0,400;0,700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    return () => document.head.removeChild(link);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +34,7 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch(
+      const res = await fetch(
         'https://y57yu3j3k2.execute-api.sa-east-1.amazonaws.com/prod/api/email-out',
         {
           method: 'POST',
@@ -35,13 +42,10 @@ function App() {
           body: JSON.stringify({ email }),
         }
       );
-
-      if (!response.ok) {
-        const errData = await response.json();
+      if (!res.ok) {
+        const errData = await res.json();
         throw new Error(errData.message || 'Erro ao enviar e-mail');
       }
-
-      // sucesso: fecha modal de inscrição e abre modal de confirmação
       setIsModalOpen(false);
       setSuccessModalOpen(true);
       setEmail('');
@@ -69,7 +73,7 @@ function App() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-        <img src={moldura} alt="Moldura Home Verde" className="frame-image" />
+        <img src={moldura} alt="Moldura" className="frame-image" />
       </div>
 
       {/* SEÇÃO INFERIOR */}
@@ -89,21 +93,9 @@ function App() {
         </div>
 
         <div className="social-container">
-          <a href="https://x.com/continuumentert" target="_blank" rel="noreferrer">
-            <img src={twitterIcon} alt="X (Twitter)" className="social-icon" />
-          </a>
-          <a href="https://www.instagram.com/continuumentert" target="_blank" rel="noreferrer">
-            <img src={instaIcon} alt="Instagram" className="social-icon" />
-          </a>
-          <a href="https://www.youtube.com/@continuumentertainment" target="_blank" rel="noreferrer">
-            <img src={ytIcon} alt="YouTube" className="social-icon" />
-          </a>
-          <a href="https://web.facebook.com/p/Continuum-Entertainment-100054417253310/?locale=pt_BR" target="_blank" rel="noreferrer">
-            <img src={faceIcon} alt="Facebook" className="social-icon" />
-          </a>
-          <a href="https://www.tiktok.com/@continuumentertainment" target="_blank" rel="noreferrer">
-            <img src={tiktokIcon} alt="TikTok" className="social-icon" />
-          </a>
+          {[twitterIcon, instaIcon, ytIcon, faceIcon, tiktokIcon].map((icon, i) => (
+            <img key={i} src={icon} className="social-icon" />
+          ))}
         </div>
       </section>
 
@@ -137,10 +129,7 @@ function App() {
             <button className="modal-close" onClick={() => setSuccessModalOpen(false)}>×</button>
             <h2>E-mail cadastrado!</h2>
             <p>Obrigado por se inscrever.</p>
-            <button
-              className="modal-submit"
-              onClick={() => setSuccessModalOpen(false)}
-            >
+            <button className="modal-submit" onClick={() => setSuccessModalOpen(false)}>
               Fechar
             </button>
           </div>
